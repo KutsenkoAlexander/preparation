@@ -1,15 +1,4 @@
-package my.study.coder.path.sixteen;
-
-import static java.lang.System.*;
-
-public class ThirdFeat {
-    public static void main(String[] args) {
-        Singleton one = Singleton.getInstance();
-        Singleton two = Singleton.getInstance();
-
-        out.println(one.equals(two));
-    }
-}
+package my.study.coder.path.sixteen.third;
 
 final class Singleton {
 
