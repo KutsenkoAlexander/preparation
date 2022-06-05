@@ -1,6 +1,6 @@
 package my.study.coder.path.sixteen.third;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 
 public class ThirdFeat {
     public static void main(String[] args) {

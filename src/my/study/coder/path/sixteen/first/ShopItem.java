@@ -5,7 +5,7 @@ import java.util.StringJoiner;
 final class ShopItem {
 
     private static int numberOfItems;
-    private int id;
+    private final int id;
     private final String title;
     private final double weight, height, width, depth, length, price;
 
