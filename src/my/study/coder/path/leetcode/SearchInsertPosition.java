@@ -1,21 +1,17 @@
-package my.study.coder.path.algorithm;
+package my.study.coder.path.leetcode;
 
-import java.util.Arrays;
-import static java.lang.System.out;
-
-public class BinarySearch {
+public class SearchInsertPosition {
     public static void main(String[] args) {
-        int[] array = {55, 88, 11, 66, 77, 22, 99, 44, 110, 11, 99, 33, 53};
-        Arrays.sort(array);
-        out.println(Arrays.toString(array));
-        int element = 99;
-        int index = binarySearch(array, 0, array.length - 1, element);
-        out.println("Index of searchable element: " + element + " + is: " + index);
+        System.out.println(searchInsert(new int[]{1,3,5,6}, 5));
+    }
+
+    private static int searchInsert(int[] nums, int target) {
+        return binarySearch(nums, 0, nums.length - 1, target);
     }
 
     private static int binarySearch(int[] array, int startIndex, int endIndex, int element) {
         if (endIndex < startIndex) {
-            return -1;
+            return endIndex + 1;
         }
 
         int middleIndex = startIndex + (endIndex - startIndex) / 2;
