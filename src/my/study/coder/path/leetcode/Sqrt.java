@@ -1,11 +1,14 @@
 package my.study.coder.path.leetcode;
 
 public class Sqrt {
-    public static void main(String[] args) {
-        System.out.println(mySqrt(8));
-    }
+  public static void main(String[] args) {
+    System.out.println(mySqrt(32));
+  }
 
-    public static int mySqrt(int x) {
-        return (int) Math.sqrt(x);
+  private static int mySqrt(final int x) {
+    if (x >= 0)  {
+      return (int) Math.sqrt(x);
     }
+    return 0;
+  }
 }
