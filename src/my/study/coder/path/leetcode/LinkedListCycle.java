@@ -15,6 +15,15 @@ public class LinkedListCycle {
     listNode4.next = listNode2;
 
     System.out.println(hasCycle(listNode1));
+    System.out.println(hasCycle(new ListNode(3)));
+
+    ListNode listNode5 = new ListNode(1);
+    ListNode listNode6 = new ListNode(2);
+
+    listNode5.next = listNode6;
+    listNode6.next = listNode5;
+
+    System.out.println(hasCycle(listNode5));
   }
 
   public static boolean hasCycle(ListNode head) {
