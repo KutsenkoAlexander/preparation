@@ -12,19 +12,13 @@ import java.util.Queue;
  */
 public class AverageOfLevelsInBinaryTree {
 
-  private static class TreeNode {
+  public static class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
 
     TreeNode(int val) {
       this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-      this.val = val;
-      this.left = left;
-      this.right = right;
     }
   }
 
@@ -43,7 +37,7 @@ public class AverageOfLevelsInBinaryTree {
       int size = queue.size();
       for (int i = 0; i < size; i++) {
         TreeNode node = queue.poll();
-        sum += node.val;
+        sum += node != null ? node.val : 0;
 
         if (node.left != null) {
           queue.add(node.left);
