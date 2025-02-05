@@ -63,5 +63,6 @@ public class SymmetricTree {
       }
       result.add(val);
     }
+    return false; // todo make this solution
   }
 }
