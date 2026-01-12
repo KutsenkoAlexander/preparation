@@ -10,6 +10,7 @@ import java.util.Map;
 import static java.lang.System.out;
 
 /**
+ * <a href="https://leetcode.com/problems/valid-parentheses/?page=1&difficulty=EASY">20. Valid Parentheses</a>
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
  * <p>
  * An input string is valid if:

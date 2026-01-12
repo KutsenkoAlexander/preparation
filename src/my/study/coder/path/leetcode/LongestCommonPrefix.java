@@ -1,5 +1,8 @@
 package my.study.coder.path.leetcode;
 
+/**
+ * <a href="https://leetcode.com/problems/longest-common-prefix/?page=1&difficulty=EASY">14. Longest Common Prefix</a>
+ */
 public class LongestCommonPrefix {
   public static void main(String[] args) {
     String[] strs = {"flower", "flow", "flight"};
