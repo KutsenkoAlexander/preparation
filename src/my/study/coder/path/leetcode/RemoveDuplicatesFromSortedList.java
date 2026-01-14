@@ -1,5 +1,7 @@
 package my.study.coder.path.leetcode;
 
+import my.study.coder.path.leetcode.domain.SimpleListNode;
+
 /**
  * <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/?page=1&difficulty=EASY">83. Remove Duplicates From Sorted List</a>
  * Given the head of a sorted linked list, delete all duplicates such that each element appears only once.
@@ -15,9 +17,9 @@ public class RemoveDuplicatesFromSortedList {
 
     public static void main(String[] args) {
 
-        ListNode headListNodeOne = initListNode(new int[]{1, 1, 2});
-        ListNode headListNodeTwo = initListNode(new int[]{1, 1, 2, 3, 3});
-        ListNode headListNodeThree = initListNode(new int[]{1, 1, 1, 3, 3});
+        SimpleListNode headListNodeOne = initListNode(new int[]{1, 1, 2});
+        SimpleListNode headListNodeTwo = initListNode(new int[]{1, 1, 2, 3, 3});
+        SimpleListNode headListNodeThree = initListNode(new int[]{1, 1, 1, 3, 3});
 
         System.out.println("Given the head of a sorted linked list with duplicates.\n");
         System.out.println(headListNodeOne);
@@ -29,45 +31,31 @@ public class RemoveDuplicatesFromSortedList {
         System.out.println(deleteDuplicates(headListNodeThree));
     }
 
-    private static ListNode deleteDuplicates(ListNode head) {
-        ListNode temp = head;
-        while (temp != null && temp.next != null) {
-            if (temp.val == temp.next.val) {
-                temp.next = temp.next.next;
+    private static SimpleListNode deleteDuplicates(SimpleListNode head) {
+        SimpleListNode temp = head;
+        while (temp != null && temp.getNext() != null) {
+            if (temp.getVal() == temp.getNext().getVal()) {
+                temp.setNext(temp.getNext().getNext());
             } else {
-                temp = temp.next;
+                temp = temp.getNext();
             }
         }
         return head;
     }
 
-    private static ListNode initListNode(int[] arr) {
-        ListNode head = null;
-        ListNode tail = null;
+    private static SimpleListNode initListNode(int[] arr) {
+        SimpleListNode head = null;
+        SimpleListNode tail = null;
 
         for (int number : arr) {
-            ListNode newNode = new ListNode(number);
+            SimpleListNode newNode = new SimpleListNode(number);
             if (head == null) {
                 head = newNode;
             } else {
-                tail.next = newNode;
+                tail.setNext(newNode);
             }
             tail = newNode;
         }
         return head;
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int val) { this.val = val; }
-
-        @Override
-        public String toString() {
-            return "ListNode{" +
-                    "val=" + val +
-                    ", next=" + next +
-                    '}';
-        }
     }
 }

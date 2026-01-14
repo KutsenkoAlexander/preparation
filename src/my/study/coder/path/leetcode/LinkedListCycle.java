@@ -1,68 +1,47 @@
 package my.study.coder.path.leetcode;
-import java.util.StringJoiner;
+
+import my.study.coder.path.leetcode.domain.SimpleListNode;
 
 public class LinkedListCycle {
 
   public static void main(String[] args) {
-    ListNode listNode1 = new ListNode(3);
-    ListNode listNode2 = new ListNode(2);
-    ListNode listNode3 = new ListNode(0);
-    ListNode listNode4 = new ListNode(-4);
+    SimpleListNode simpleListNode1 = new SimpleListNode(3);
+    SimpleListNode simpleListNode2 = new SimpleListNode(2);
+    SimpleListNode simpleListNode3 = new SimpleListNode(0);
+    SimpleListNode simpleListNode4 = new SimpleListNode(-4);
 
-    listNode1.next = listNode2;
-    listNode2.next = listNode3;
-    listNode3.next = listNode4;
-    listNode4.next = listNode2;
+    simpleListNode1.setNext(simpleListNode2);
+    simpleListNode3.setNext(simpleListNode4);
+    simpleListNode4.setNext(simpleListNode2);
+    simpleListNode2.setNext(simpleListNode3);
 
-    System.out.println(hasCycle(listNode1));
-    System.out.println(hasCycle(new ListNode(3)));
+    System.out.println(hasCycle(simpleListNode1));
+    System.out.println(hasCycle(new SimpleListNode(3)));
 
-    ListNode listNode5 = new ListNode(1);
-    ListNode listNode6 = new ListNode(2);
+    SimpleListNode simpleListNode5 = new SimpleListNode(1);
+    SimpleListNode simpleListNode6 = new SimpleListNode(2);
 
-    listNode5.next = listNode6;
-    listNode6.next = listNode5;
+    simpleListNode5.setNext(simpleListNode6);
+    simpleListNode6.setNext(simpleListNode5);
 
-    System.out.println(hasCycle(listNode5));
+    System.out.println(hasCycle(simpleListNode5));
   }
 
-  public static boolean hasCycle(ListNode head) {
+  public static boolean hasCycle(SimpleListNode head) {
 
-    if (head == null || head.next == null) {
+    if (head == null || head.getNext() == null) {
       return false;
     }
 
-    ListNode slow = head;
-    ListNode fast = head;
+    SimpleListNode slow = head;
+    SimpleListNode fast = head;
 
-    while(fast != null && fast.next != null) {
-      slow = slow.next;
-      fast = fast.next.next;
+    while(fast != null && fast.getNext() != null) {
+      slow = slow.getNext();
+      fast = fast.getNext().getNext();
       if(slow == fast) return true;
     }
 
     return false;
-  }
-
-  public static class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int val) {
-      this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-      this.val = val;
-      this.next = next;
-    }
-
-    @Override
-    public String toString() {
-      return new StringJoiner(", ", ListNode.class.getSimpleName() + "{", "}")
-        .add("val=" + val)
-        .add("next=" + next)
-        .toString();
-    }
   }
 }
