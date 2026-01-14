@@ -17,13 +17,16 @@ public class RemoveDuplicatesFromSortedList {
 
         ListNode headListNodeOne = initListNode(new int[]{1, 1, 2});
         ListNode headListNodeTwo = initListNode(new int[]{1, 1, 2, 3, 3});
+        ListNode headListNodeThree = initListNode(new int[]{1, 1, 1, 3, 3});
 
         System.out.println("Given the head of a sorted linked list with duplicates.\n");
         System.out.println(headListNodeOne);
         System.out.println(headListNodeTwo);
+        System.out.println(headListNodeThree);
         System.out.println("\nReturn the linked list sorted as well without duplicates.\n");
         System.out.println(deleteDuplicates(headListNodeOne));
         System.out.println(deleteDuplicates(headListNodeTwo));
+        System.out.println(deleteDuplicates(headListNodeThree));
     }
 
     private static ListNode deleteDuplicates(ListNode head) {
