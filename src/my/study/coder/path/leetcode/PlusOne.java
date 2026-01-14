@@ -2,6 +2,9 @@ package my.study.coder.path.leetcode;
 
 import java.util.Arrays;
 
+/**
+ * <a href="https://leetcode.com/problems/plus-one/?page=1&difficulty=EASY">66. Plus One</a>
+ */
 public class PlusOne {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(plusOne(new int[]{2, 2, 9, 9, 9})));
