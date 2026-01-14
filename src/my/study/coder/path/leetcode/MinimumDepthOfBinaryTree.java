@@ -3,6 +3,9 @@ package my.study.coder.path.leetcode;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ * <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/?page=1&difficulty=EASY">104. Minimum Depth Of Binary Tree</a>
+ */
 public class MinimumDepthOfBinaryTree {
 
   public static class TreeNode {
