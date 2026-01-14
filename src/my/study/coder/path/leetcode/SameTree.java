@@ -1,6 +1,9 @@
 package my.study.coder.path.leetcode;
 
-public class IsSameTree {
+/**
+ * <a href="https://leetcode.com/problems/same-tree/description/?page=1&difficulty=EASY">100. Same Tree</a>
+ */
+public class SameTree {
 
   public static void main(String[] args) {
     TreeNode root1 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
