@@ -5,6 +5,8 @@ public class TreeNode {
   TreeNode left;
   TreeNode right;
 
+  TreeNode() {}
+
   TreeNode(int val) {
     this.val = val;
   }
@@ -15,8 +17,16 @@ public class TreeNode {
     this.right = right;
   }
 
-  @Override
-  public String toString() {
-    return Integer.toString(val);
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
+
+    public String getStringValue() {
+      return Integer.toString(val);
   }
 }
