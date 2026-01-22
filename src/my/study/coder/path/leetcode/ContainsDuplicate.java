@@ -19,7 +19,7 @@ public class ContainsDuplicate {
         System.out.println("8. true: " + solutionOne(new int[]{1,1,1,3,3,4,3,2,4,2}));
         System.out.println("9. true: " + solutionOne(new int[]{40,1,2,3,4,5,6,7,40,8}));
         //-----------------------------------------------------------------
-        System.out.println();
+        System.out.println("-----------------------------------------------------------------");
         //-----------------------------------------------------------------
         System.out.println("10. false: " + solutionTwo(null));
         System.out.println("11. false: " + solutionTwo(new int[]{}));
@@ -50,7 +50,7 @@ public class ContainsDuplicate {
             return false;
         }
         Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length - 1; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (set.contains(nums[i])) {
                 return true;
             }
