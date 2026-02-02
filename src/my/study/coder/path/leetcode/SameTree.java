@@ -1,5 +1,7 @@
 package my.study.coder.path.leetcode;
 
+import my.study.coder.path.leetcode.domain.TreeNode;
+
 /**
  * <a href="https://leetcode.com/problems/same-tree/description/?page=1&difficulty=EASY">100. Same Tree</a>
  */
@@ -21,7 +23,7 @@ public class SameTree {
   private static boolean isSameTree(TreeNode p, TreeNode q) {
     if (p == null && q == null) return true;
     if (p == null || q == null) return false;
-    if (p.val != q.val) return false;
-    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    if (p.getVal() != q.getVal()) return false;
+    return isSameTree(p.getLeft(), q.getLeft()) && isSameTree(p.getRight(), q.getRight());
   }
 }

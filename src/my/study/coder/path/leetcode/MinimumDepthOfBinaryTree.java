@@ -1,5 +1,7 @@
 package my.study.coder.path.leetcode;
 
+import my.study.coder.path.leetcode.domain.TreeNode;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -7,16 +9,6 @@ import java.util.Queue;
  * <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/?page=1&difficulty=EASY">104. Minimum Depth Of Binary Tree</a>
  */
 public class MinimumDepthOfBinaryTree {
-
-  public static class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int val) {
-      this.val = val;
-    }
-  }
 
   public static int minDepth(TreeNode root) {
     if (root == null) {
@@ -37,16 +29,16 @@ public class MinimumDepthOfBinaryTree {
           return depth;
         }
 
-        if (node.left == null && node.right == null) {
+        if (node.getLeft() == null && node.getRight() == null) {
           return depth;
         }
 
-        if (node.left != null) {
-          queue.add(node.left);
+        if (node.getLeft() != null) {
+          queue.add(node.getLeft());
         }
 
-        if (node.right != null) {
-          queue.add(node.right);
+        if (node.getRight() != null) {
+          queue.add(node.getRight());
         }
       }
 
@@ -60,14 +52,14 @@ public class MinimumDepthOfBinaryTree {
     TreeNode root = new TreeNode(3);
 
     TreeNode left1 = new TreeNode(9);
-    root.left = left1;
-    left1.right = new TreeNode(123);
-    left1.left = new TreeNode(666);
+    root.setLeft(left1);
+    left1.setRight(new TreeNode(123));
+    left1.setLeft(new TreeNode(666));
 
     TreeNode right1 = new TreeNode(20);
-    root.right = right1;
-    right1.left = new TreeNode(15);
-    right1.right = new TreeNode(7);
+    root.setRight(right1);
+    right1.setLeft(new TreeNode(15));
+    right1.setRight(new TreeNode(7));
 
     System.out.println(minDepth(root));
   }

@@ -1,5 +1,7 @@
 package my.study.coder.path.leetcode;
 
+import my.study.coder.path.leetcode.domain.TreeNode;
+
 /**
  * <a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/?page=1&difficulty=EASY">108. Convert Sorted Array To Binary Search Tree</a>
  */
@@ -15,8 +17,8 @@ public class ConvertSortedArrayToBinarySearchTree {
         }
         var mid = (start + end) / 2;
         var midNode = new TreeNode(numbs[mid]);
-        midNode.left = buildSubBst(numbs, start, end - 1);
-        midNode.right = buildSubBst(numbs, mid + 1, end);
+        midNode.setLeft(buildSubBst(numbs, start, end - 1));
+        midNode.setRight(buildSubBst(numbs, mid + 1, end));
         return  midNode;
     }
 }

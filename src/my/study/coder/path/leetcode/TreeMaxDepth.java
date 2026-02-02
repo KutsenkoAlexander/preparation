@@ -1,6 +1,8 @@
 package my.study.coder.path.leetcode;
 
-import static java.lang.System.*;
+import my.study.coder.path.leetcode.domain.TreeNode;
+
+import static java.lang.System.out;
 
 /**
  * Given the root of a binary tree, return its maximum depth.
@@ -37,24 +39,8 @@ public class TreeMaxDepth {
         if (root == null) {
             return 0;
         }
-        int leftLevel = calculateMaxDepth(root.left);
-        int rightLevel = calculateMaxDepth(root.right);
+        int leftLevel = calculateMaxDepth(root.getLeft());
+        int rightLevel = calculateMaxDepth(root.getRight());
         return Math.max(leftLevel, rightLevel) + 1;
-    }
-
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }

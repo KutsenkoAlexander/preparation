@@ -1,5 +1,7 @@
 package my.study.coder.path.leetcode;
 
+import my.study.coder.path.leetcode.domain.TreeNode;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -25,7 +27,7 @@ public class SymmetricTree {
 
   public static boolean solution1(TreeNode root) {
     if (root == null) return true;
-    return isSymmetricRecursion(root.left, root.right);
+    return isSymmetricRecursion(root.getLeft(), root.getRight());
   }
 
   public static boolean solution2(TreeNode root) {
@@ -36,14 +38,14 @@ public class SymmetricTree {
   public static boolean isSymmetricRecursion(TreeNode left, TreeNode right) {
     if (left == null && right == null) return true;
     if (left == null || right == null) return false;
-    return left.val == right.val
-      && isSymmetricRecursion(left.left, right.right)
-      && isSymmetricRecursion(left.right, right.left);
+    return left.getVal() == right.getVal()
+      && isSymmetricRecursion(left.getLeft(), right.getRight())
+      && isSymmetricRecursion(left.getRight(), right.getLeft());
   }
 
   public static boolean isSymmetricIterable(TreeNode root) {
     List<Integer> result = new ArrayList<>();
-    result.add(root.val);
+    result.add(root.getVal());
 
     Deque<TreeNode> queue = new ArrayDeque<>();
     queue.add(root);
@@ -53,12 +55,12 @@ public class SymmetricTree {
       int size = queue.size();
       for (int i = 0; i < size; i++) {
         TreeNode node = queue.poll();
-        val = node != null ? node.val : null;
-        if (node.left != null) {
-          queue.add(node.left);
+        val = node != null ? node.getVal() : null;
+        if (node.getLeft() != null) {
+          queue.add(node.getLeft());
         }
-        if (node.right != null) {
-          queue.add(node.right);
+        if (node.getRight() != null) {
+          queue.add(node.getRight());
         }
       }
       result.add(val);
