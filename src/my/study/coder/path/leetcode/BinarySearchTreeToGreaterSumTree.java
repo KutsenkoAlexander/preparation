@@ -8,6 +8,9 @@ import java.util.Queue;
 
 /**
  * <a href="https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/?page=1&difficulty=EASY">1038. Binary Search Tree to Greater Sum Tree</a>
+ *
+ * Input: root = [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
+ * Output: [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
  */
 public class BinarySearchTreeToGreaterSumTree {
 
@@ -25,7 +28,7 @@ public class BinarySearchTreeToGreaterSumTree {
         */
         var firstTreeNode = initTreeNode(new Integer[]{4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8});
         var result = solution(firstTreeNode);
-        System.out.println(Arrays.toString(toArray(result))); // converts TreeNode to int array
+        System.out.println(Arrays.toString(toArray(result).toArray())); // converts TreeNode to int array
     }
 
     private static TreeNode initTreeNode(Integer[] nums) {
@@ -64,22 +67,25 @@ public class BinarySearchTreeToGreaterSumTree {
         calculateSum(currentNode.getLeft());
     }
 
-    private static Object[] toArray(TreeNode root) {
+    //TODO need fix method name + print correct order
+    private static Queue<Integer> toArray(TreeNode root) {
         if (root == null) {
-            return new Object[]{};
+            return null;
         }
 
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(root.getVal());
-
-        while (root != null) {
-            queue.offer(root.getLeft().getVal());
-            result.add(root.getVal());
-            result.add(root.getLeft().getVal());
-            result.add(getRightVal(root.getRight()));
+        if (root.getLeft() != null) {
+            queue.addAll(toArray(root.getLeft()));
+        } else {
+            queue.add(null);
         }
-
-        return queue.toArray();
+        if (root.getRight() != null) {
+            queue.addAll(toArray(root.getRight()));
+        } else {
+            queue.add(null);
+        }
+        return queue;
     }
 
     private static int getRightVal(TreeNode root) {
