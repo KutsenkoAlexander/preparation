@@ -8,7 +8,6 @@ import java.util.Queue;
 
 /**
  * <a href="https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/?page=1&difficulty=EASY">1038. Binary Search Tree to Greater Sum Tree</a>
- *
  * Input: root = [4,1,6,0,2,5,7,null,null,null,3,null,null,null,8]
  * Output: [30,36,21,36,35,26,15,null,null,null,33,null,null,null,8]
  */
@@ -28,7 +27,7 @@ public class BinarySearchTreeToGreaterSumTree {
         */
         var firstTreeNode = initTreeNode(new Integer[]{4, 1, 6, 0, 2, 5, 7, null, null, null, 3, null, null, null, 8});
         var result = solution(firstTreeNode);
-        System.out.println(Arrays.toString(toArray(result).toArray())); // converts TreeNode to int array
+        System.out.println(Arrays.toString(toArray(result))); // converts TreeNode to int array
     }
 
     private static TreeNode initTreeNode(Integer[] nums) {
@@ -67,33 +66,41 @@ public class BinarySearchTreeToGreaterSumTree {
         calculateSum(currentNode.getLeft());
     }
 
-    //TODO need fix method name + print correct order
-    private static Queue<Integer> toArray(TreeNode root) {
+    private static Object[] toArray(TreeNode root) {
         if (root == null) {
             return null;
         }
 
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(root.getVal());
-        if (root.getLeft() != null) {
-            queue.addAll(toArray(root.getLeft()));
-        } else {
-            queue.add(null);
-        }
-        if (root.getRight() != null) {
-            queue.addAll(toArray(root.getRight()));
-        } else {
-            queue.add(null);
-        }
-        return queue;
-    }
+        Queue<TreeNode> queueTreeNodes = new LinkedList<>();
+        Queue<Integer> queueValues= new LinkedList<>();
 
-    private static int getRightVal(TreeNode root) {
-        if (root == null) {
-            return 0;
+        if (root != null) {
+            queueTreeNodes.add(root);
         }
-        var r = root.getVal();
-        r = getRightVal(root.getRight());
-        return r;
+
+        int count = 0;
+
+        while (!queueTreeNodes.isEmpty()) {
+            TreeNode tempNode = queueTreeNodes.poll();
+            if (tempNode == null) {
+                queueValues.offer(null);
+            } else {
+                queueValues.offer(tempNode.getVal());
+
+                if (tempNode.getLeft() != null) {
+                    queueTreeNodes.offer(tempNode.getLeft());
+                } else {
+                    queueTreeNodes.offer(null);
+                }
+
+                if (tempNode.getRight() != null) {
+                    queueTreeNodes.offer(tempNode.getRight());
+                } else {
+                    queueTreeNodes.offer(null);
+                }
+                count++;
+            }
+        }
+        return queueValues.stream().limit(count * 2L - 3).toArray();
     }
 }
